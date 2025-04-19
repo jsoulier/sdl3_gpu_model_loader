@@ -1,9 +1,7 @@
-#include <SDL3/SDL.h>
-#include <SDL3_modelloader/SDL_modelloader.h>
-
 #include <cgltf.h>
+#include "SDL_modelloader_impl.h"
 
-bool SDL_MDLLoadGLTF(SDL_MDLModel* model, const char* path)
+bool SDL_ModelLoadGLTF(SDL_Model* model, const char* path)
 {
     return false;
 }

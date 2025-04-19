@@ -12,18 +12,18 @@ extern "C" {
  * @brief
  * 
  */
-typedef enum SDL_MDLFormat
+typedef enum SDL_ModelFormat
 {
-    SDL_MDLFORMAT_UNKNOWN,
-    SDL_MDLFORMAT_OBJ,
-    SDL_MDLFORMAT_GLTF,
-} SDL_MDLFormat;
+    SDL_ModelFORMAT_UNKNOWN,
+    SDL_ModelFORMAT_OBJ,
+    SDL_ModelFORMAT_GLTF,
+} SDL_ModelFormat;
 
 /**
  * @brief
  * 
  */
-typedef struct SDL_MDLVertex
+typedef struct SDL_ModelVertex
 {
     struct {
         float x;
@@ -39,32 +39,43 @@ typedef struct SDL_MDLVertex
         float y;
         float z;
     } normal;
-} SDL_MDLVertex;
+} SDL_ModelVertex;
 
-/**
- * @brief
- * 
- */
-typedef struct SDL_MDLMesh
+typedef struct SDL_ModelMaterial
 {
     SDL_GPUTexture* diffuse;
     SDL_GPUTexture* specular;
-    SDL_GPUBuffer* vertices;
-    SDL_GPUBuffer* indices;
-    Uint32 num_vertices;
-    Uint32 num_indices;
-} SDL_MDLMesh;
+} SDL_ModelMaterial;
 
 /**
  * @brief
  * 
  */
-typedef struct SDL_MDLModel
+typedef struct SDL_ModelMesh
 {
-    SDL_MDLMesh* meshes;
+    SDL_GPUBuffer* vertices;
+    SDL_GPUBuffer* indices;
+
+    Uint32 num_vertices;
+    Uint32 num_indices;
+
+    Uint32 material;
+} SDL_ModelMesh;
+
+/**
+ * @brief
+ * 
+ */
+typedef struct SDL_Model
+{
+    SDL_ModelMesh* meshes;
     Uint32 num_meshes;
+
+    SDL_ModelMaterial* materials;
+    Uint32 num_materials;
+
     SDL_GPUDevice* device;
-} SDL_MDLModel;
+} SDL_Model;
 
 /**
  * @brief
@@ -74,14 +85,14 @@ typedef struct SDL_MDLModel
  * @param format
  * @return
  */
-SDL_DECLSPEC SDL_MDLModel* SDLCALL SDL_MDLLoad(SDL_GPUDevice* device, const char* path, SDL_MDLFormat format);
+SDL_DECLSPEC SDL_Model* SDLCALL SDL_ModelLoad(SDL_GPUDevice* device, const char* path, SDL_ModelFormat format);
 
 /**
  * @brief
  * 
  * @param model
  */
-SDL_DECLSPEC void SDLCALL SDL_MDLDestroy(SDL_MDLModel* model);
+SDL_DECLSPEC void SDLCALL SDL_ModelDestroy(SDL_Model* model);
 
 #ifdef __cplusplus
 } /* extern "C" */

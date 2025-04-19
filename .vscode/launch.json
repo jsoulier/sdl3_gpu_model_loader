@@ -5,7 +5,7 @@
             "name": "win32",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/SDL3_modelloader_example.exe",
+            "program": "${workspaceFolder}/build/bin/example.exe",
             "cwd": "${workspaceFolder}/build/bin",
             "preLaunchTask": "CMake: build"
         },

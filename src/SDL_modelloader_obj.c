@@ -1,9 +1,7 @@
-#include <SDL3/SDL.h>
-#include <SDL3_modelloader/SDL_modelloader.h>
-
 #include <fast_obj.h>
+#include "SDL_modelloader_impl.h"
 
-bool SDL_MDLLoadOBJ(SDL_MDLModel* model, const char* path)
+bool SDL_ModelLoadOBJ(SDL_Model* model, const char* path)
 {
     return false;
 }
