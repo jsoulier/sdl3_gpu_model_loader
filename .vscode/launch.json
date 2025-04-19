@@ -5,7 +5,10 @@
             "name": "win32",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/example.exe",
+            "program": "${workspaceFolder}/build/bin/sample.exe",
+            "args": [
+                "C:/Users/jaans/SDL_modelloader/sample/models/qilin_0/Qilin/qilin.obj"
+            ],
             "cwd": "${workspaceFolder}/build/bin",
             "preLaunchTask": "CMake: build"
         },

@@ -10,6 +10,10 @@ static SDL_GPUGraphicsPipeline* pipeline;
 static SDL_GPUTexture* depth_texture;
 static Uint32 width;
 static Uint32 height;
+static HMM_Vec3 position;
+static float pitch;
+static float yaw;
+static float zoom;
 
 static SDL_GPUShader* LoadShader(const char* path, const int uniforms, const int samplers)
 {
@@ -43,8 +47,8 @@ static SDL_GPUShader* LoadShader(const char* path, const int uniforms, const int
 static SDL_GPUGraphicsPipeline* LoadPipeline()
 {
     SDL_GPUGraphicsPipelineCreateInfo info = {0};
-    info.vertex_shader = LoadShader("example.vert", 1, 0);
-    info.fragment_shader = LoadShader("example.frag", 0, 1);
+    info.vertex_shader = LoadShader("sample.vert", 1, 0);
+    info.fragment_shader = LoadShader("sample.frag", 0, 1);
     if (!info.vertex_shader || !info.fragment_shader) {
         SDL_Log("Failed to load graphics pipeline");
         return NULL;
@@ -157,12 +161,12 @@ static void Draw()
 int main(int argc, char** argv)
 {
     SDL_SetLogPriorities(SDL_LOG_PRIORITY_VERBOSE);
-    SDL_SetAppMetadata("SDL_modelloader_example", NULL, NULL);
+    SDL_SetAppMetadata("SDL_modelloader_sample", NULL, NULL);
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("Failed to initialize SDL: %s", SDL_GetError());
         return 1;
     }
-    if (!(window = SDL_CreateWindow("SDL_modelloader_example", 960, 720, SDL_WINDOW_RESIZABLE))) {
+    if (!(window = SDL_CreateWindow("SDL_modelloader_sample", 960, 720, SDL_WINDOW_RESIZABLE))) {
         SDL_Log("Failed to create window: %s", SDL_GetError());
         return 1;
     }

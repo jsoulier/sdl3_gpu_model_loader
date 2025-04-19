@@ -1,3 +1,6 @@
 [submodule "example/SDL"]
-	path = example/SDL
+	path = sample/SDL
 	url = https://github.com/libsdl-org/SDL
+[submodule "example/models"]
+	path = sample/models
+	url = https://github.com/jsoulier/SDL_modelloader_models
